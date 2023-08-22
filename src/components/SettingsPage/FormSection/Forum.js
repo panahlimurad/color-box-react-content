@@ -1,27 +1,32 @@
 import React, { useContext, useState } from "react";
 import { GlobalContext } from "../../GlobalProvider";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
-  const { addColor, printHomeColor, resetColors } = useContext(GlobalContext);
+  const { addColor, printHomeColor, resetColors, colorsLength } =
+    useContext(GlobalContext);
   const [newName, setNewName] = useState("");
   const [newCode, setNewCode] = useState("");
   const { colors } = useContext(GlobalContext);
   const [groupName, setGroupName] = useState("");
-  
+  const navigate = useNavigate();
+
+
   const handleHomeColor = () => {
     const newColorGroup = {
       groupName: groupName,
-      colors: [...colors], 
+      colors: [...colors],
     };
     printHomeColor(newColorGroup);
-    resetColors(); 
+    resetColors();
     setGroupName("");
+    navigate("/")
   };
 
   const handleUpdate = () => {
     addColor(newName, newCode);
   };
+
 
   return (
     <div className="flex flex-col items-center justify-center mt-10">
@@ -47,12 +52,14 @@ const Form = () => {
       >
         Add Color
       </button>
-      <Link
-        to="/"
-        className="mt-5 bg-green-900 w-3/4 rounded-md h-10 text-slate-50 hover:bg-green-700"
+
+      <button
+        className={`mt-5 bg-green-900 w-3/4 rounded-md h-10 text-slate-50 hover:bg-green-700 ${colorsLength !==6 ?"opacity-50 cursor-not-allowed" : "" }`}
+        onClick={handleHomeColor}
       >
-        <button onClick={handleHomeColor}>Save</button>
-      </Link>
+        Save
+      </button>
+
       <form className="mt-5 w-3/4">
         <input
           type="text"

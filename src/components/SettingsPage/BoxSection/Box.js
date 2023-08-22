@@ -7,12 +7,13 @@ const Box = () => {
  
   const limitedColors = colors.slice(0, 6);
 
+  
  
 
 
   return (
-    <div className="flex flex-col mt-10 items-center">
-      <div className="flex w-3/4">
+    <div className="flex flex-col mt-10 items-center w-full">
+      <div className="flex flex-wrap">
         {limitedColors.map((color, index) => (
           <div
             key={index}

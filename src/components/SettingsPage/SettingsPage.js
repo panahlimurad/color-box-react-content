@@ -7,8 +7,12 @@ const SettingsPage = () => {
     <>
       <div className="text-center">
         <h1 className="text-slate-50 text-5xl">Setting Page</h1>
-      <Form />
-      <Box />
+        <p className="text-slate-50 mt-3">
+          Here you can create your own color groups by choosing 6 color names or
+          codes and saving them.
+        </p>
+        <Form />
+        <Box />
       </div>
     </>
   );

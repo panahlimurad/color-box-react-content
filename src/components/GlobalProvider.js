@@ -8,6 +8,7 @@ export const GlobalProvider = ({ children }) => {
   const [colors, setColors] = useState([]);
   const [homeColors, setHomeColors] = useState([]);
   const [groupName, setGroupName] = useState("");
+  const colorsLength = colors.length
 
   const printHomeColor = (colorGroup) => {
     setHomeColors([...homeColors, colorGroup]);
@@ -33,6 +34,7 @@ export const GlobalProvider = ({ children }) => {
         colors,
         homeColors,
         groupName,
+        colorsLength,
         addColor,
         resetColors,
         printHomeColor,
